@@ -65,6 +65,25 @@ namespace Lab_6
                 _penaltyTimes = null;
             }
             //методы 
+            public static void Sort(Participant[] array)
+            {
+                if (array == null || array.Length == 0) return;
+                for (int i = 1, j = 2; i < array.Length;)
+                {
+                    if (i == 0 || array[i - 1].TotalTime <= array[i].TotalTime)
+                    {
+                        i = j;
+                        j++;
+                    }
+                    else
+                    {
+                        Participant temp = array[i];
+                        array[i] = array[i - 1];
+                        array[i - 1] = temp;
+                        i--;
+                    }
+                }
+            }
             public void PlayMatch(int time)
             {
                 if (_penaltyTimes == null || _penaltyTimes.Length == 0)

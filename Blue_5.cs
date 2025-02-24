@@ -9,7 +9,7 @@ namespace Lab_6
 {
     public class Blue_5
     {
-        public struct Sportsman
+        public struct Sportsmen
         {
             //поля
             private string _name;
@@ -20,7 +20,7 @@ namespace Lab_6
             public string Surname { get { return _surname; } }
             public int Place { get { return _place; } }
             //конструктор 
-            public Sportsman(string name, string surname)
+            public Sportsmen(string name, string surname)
             {
                 _name = name;
                 _surname = surname;
@@ -41,19 +41,19 @@ namespace Lab_6
         {
             //поля
             private string _name;
-            private Sportsman[] _sportsman;
+            private Sportsmen[] _sportsmen;
             private int _count;
             //свойства 
             public string Name { get { return _name; } }
-            public Sportsman[] Sportsman
+            public Sportsmen[] Sportsman
             {
                 get
                 {
-                    if (_sportsman == null || _sportsman.Length == 0) return null;
-                    Sportsman[] copy = new Sportsman[_sportsman.Length];
-                    for (int i = 0; i < _sportsman.Length; i++)
+                    if (_sportsmen == null || _sportsmen.Length == 0) return null;
+                    Sportsmen[] copy = new Sportsmen[_sportsmen.Length];
+                    for (int i = 0; i < _sportsmen.Length; i++)
                     {
-                        copy[i] = _sportsman[i];
+                        copy[i] = _sportsmen[i];
                     }
                     return copy;
                 }
@@ -63,15 +63,15 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_sportsman == null || _sportsman.Length == 0) return 0;
+                    if (_sportsmen == null || _sportsmen.Length == 0) return 0;
                     int sum = 0;
-                    for (int i = 0; i < _sportsman.Length; i++)
+                    for (int i = 0; i < _sportsmen.Length; i++)
                     {
-                        if (_sportsman[i].Place == 1) sum += 5;
-                        else if (_sportsman[i].Place == 2) sum += 4;
-                        else if (_sportsman[i].Place == 3) sum += 3;
-                        else if (_sportsman[i].Place == 2) sum += 2;
-                        else if (_sportsman[i].Place == 1) sum += 1;
+                        if (_sportsmen[i].Place == 1) sum += 5;
+                        else if (_sportsmen[i].Place == 2) sum += 4;
+                        else if (_sportsmen[i].Place == 3) sum += 3;
+                        else if (_sportsmen[i].Place == 4) sum += 2;
+                        else if (_sportsmen[i].Place == 5) sum += 1;
                     }
                     return sum;
                 }
@@ -80,11 +80,11 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_sportsman == null || _sportsman.Length == 0) return 0;
+                    if (_sportsmen == null || _sportsmen.Length == 0) return 0;
                     int maxPlace = int.MaxValue;
-                    for (int i = 0; i < _sportsman.Length; i++)
+                    for (int i = 0; i < _sportsmen.Length; i++)
                     {
-                        if (_sportsman[i].Place > 0 && _sportsman[i].Place < maxPlace) maxPlace = _sportsman[i].Place;
+                        if (_sportsmen[i].Place > 0 && _sportsmen[i].Place < maxPlace) maxPlace = _sportsmen[i].Place;
                     }
                     return maxPlace;
                 }
@@ -94,23 +94,23 @@ namespace Lab_6
             public Team (string name)
             {
                 _name = name;
-                _sportsman = new Sportsman[6];
+                _sportsmen = new Sportsmen[6];
                 _count = 0;
             }
             //методы
-            public void Add(Sportsman sportsman)
+            public void Add(Sportsmen sportsman)
             {
-                if (_sportsman == null || _sportsman.Length == 0 || _count >= _sportsman.Length) return;
-                _sportsman[_count] = sportsman;
+                if (_sportsmen == null || _sportsmen.Length == 0 || _count >= _sportsmen.Length) return;
+                _sportsmen[_count] = sportsman;
                 _count++;
             }
-            public void Add(Sportsman[] sportsman)
+            public void Add(Sportsmen[] sportsman)
             {
-                if (_sportsman.Length == 0 || _sportsman == null || sportsman == null || sportsman.Length == 0 || _count >= _sportsman.Length) return;
+                if (_sportsmen.Length == 0 || _sportsmen == null || sportsman == null || sportsman.Length == 0 || _count >= _sportsmen.Length) return;
                 int i = 0;
-                while (_count < _sportsman.Length && i < sportsman.Length)
+                while (_count < _sportsmen.Length && i < sportsman.Length)
                 {
-                    _sportsman[_count] = sportsman[i];
+                    _sportsmen[_count] = sportsman[i];
                     _count++;
                     i++;
                 }
@@ -141,7 +141,7 @@ namespace Lab_6
             }
             public void Print()
             {
-                for (int i = 0; i < _sportsman.Length; i++)
+                for (int i = 0; i < _sportsmen.Length; i++)
                 {
                     Console.WriteLine($"{_name} {SummaryScore} {TopPlace}");
                 }
