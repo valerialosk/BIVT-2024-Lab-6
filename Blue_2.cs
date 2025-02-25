@@ -35,7 +35,7 @@ namespace Lab_6
                     return copy;
                 }
             }
-            public int Count { get { return _count; } }
+            private int Count { get { return _count; } }
             public int TotalScore
             {
                 get
@@ -63,7 +63,7 @@ namespace Lab_6
             //методы
             public void Jump(int[] result)
             {
-                if (result == null || result.Length != _marks.GetLength(1) || _marks == null || _marks.GetLength(0) != 2 || _marks.GetLength(1) != 5) return;
+                if (result == null || _marks == null || result.Length == 0 || _marks.GetLength(0) < 2 || _marks.GetLength(1) < 5)
                 if (_count == 0)
                 {
                     for (int j = 0; j < 5; j++)

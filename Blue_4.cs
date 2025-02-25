@@ -20,7 +20,7 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_scores == null || _scores.Length == 0) return null;
+                    if (_scores == null) return null;
                     int[] copy = new int[_scores.Length];
                     for (int i = 0; i < copy.Length; i++)
                     {
@@ -33,7 +33,7 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_scores == null || _scores.Length == 0) return 0;
+                    if (_scores == null) return 0;
                     int count = 0;
                     for (int i = 0; i < _scores.Length; i++)
                     {
@@ -46,7 +46,7 @@ namespace Lab_6
             public Team(string name)
             {
                 _name = name;
-                _scores = null;
+                _scores = new int[0];
             }
             //методы
             public void PlayMatch(int result)
@@ -55,17 +55,19 @@ namespace Lab_6
                 {
                     int[] _sc = new int[1];
                     _sc[0] = result;
-                    _scores = _sc;
+                    _scores = new int[1];
+                    Array.Copy(_sc, _scores, _sc.Length);
                 }
                 else
                 {
-                    int[] sc = new int[_scores.Length + 1];
-                    sc[sc.Length - 1] = result;
+                    int[] _sc = new int[_scores.Length + 1];
+                    _sc[_sc.Length - 1] = result;
                     for (int i = 0; i < _scores.Length; i++)
                     {
-                        sc[i] = _scores[i];
+                        _sc[i] = _scores[i];
                     }
-                    _scores = sc;
+                    _scores = new int[_sc.Length];
+                    Array.Copy(_sc, _scores, _sc.Length);
                 }
             }
             public void Print()
@@ -85,7 +87,7 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_teams == null || _teams.Length == 0) return null;
+                    if (_teams == null) return null;
                     Team[] copy = new Team[_teams.Length];
                     for (int i = 0; i < copy.Length;i++)
                     {
@@ -94,7 +96,7 @@ namespace Lab_6
                     return copy;
                 }
             }
-            public int Count {get { return _count; } }
+            private int Count {get { return _count; } }
             //конструктор
             public Group (string name)
             {

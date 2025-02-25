@@ -14,7 +14,7 @@ namespace Lab_6
             //поля
             private string _name;
             private string _surname;
-            public int[] _penaltyTimes;
+            private int[] _penaltyTimes;
             //свойства 
             public string Name { get { return _name; } }
             public string Surname { get { return _surname; } }
@@ -62,7 +62,7 @@ namespace Lab_6
             {
                 _name = name;
                 _surname = surname;
-                _penaltyTimes = null;
+                _penaltyTimes = new int[0];
             }
             //методы 
             public static void Sort(Participant[] array)
@@ -86,21 +86,24 @@ namespace Lab_6
             }
             public void PlayMatch(int time)
             {
-                if (_penaltyTimes == null || _penaltyTimes.Length == 0)
+                if (_penaltyTimes == null) return;
+                if (_penaltyTimes.Length == 0)
                 {
                     int[] _pT = new int[1];
                     _pT[0] = time;
-                    _penaltyTimes = _pT;
+                    _penaltyTimes = new int[1];
+                    Array.Copy(_pT, _penaltyTimes, _pT.Length);
                 }
                 else
                 {
-                    int[] pT = new int[_penaltyTimes.Length + 1];
-                    pT[pT.Length - 1] = time;
+                    int[] _pT = new int[_penaltyTimes.Length + 1];
+                    _pT[_pT.Length - 1] = time;
                     for (int i = 0; i < _penaltyTimes.Length;i++)
                     {
-                        pT[i] = _penaltyTimes[i];
+                        _pT[i] = _penaltyTimes[i];
                     }
-                    _penaltyTimes = pT;
+                    _penaltyTimes = new int[_pT.Length];
+                    Array.Copy(_pT, _penaltyTimes, _pT.Length);
                 }
             }
             public void Print()

@@ -9,7 +9,7 @@ namespace Lab_6
 {
     public class Blue_5
     {
-        public struct Sportsmen
+        public struct Sportsman
         {
             //поля
             private string _name;
@@ -20,7 +20,7 @@ namespace Lab_6
             public string Surname { get { return _surname; } }
             public int Place { get { return _place; } }
             //конструктор 
-            public Sportsmen(string name, string surname)
+            public Sportsman(string name, string surname)
             {
                 _name = name;
                 _surname = surname;
@@ -41,16 +41,16 @@ namespace Lab_6
         {
             //поля
             private string _name;
-            private Sportsmen[] _sportsmen;
+            private Sportsman[] _sportsmen;
             private int _count;
             //свойства 
             public string Name { get { return _name; } }
-            public Sportsmen[] Sportsman
+            public Sportsman[] Sportsmen
             {
                 get
                 {
                     if (_sportsmen == null || _sportsmen.Length == 0) return null;
-                    Sportsmen[] copy = new Sportsmen[_sportsmen.Length];
+                    Sportsman[] copy = new Sportsman[_sportsmen.Length];
                     for (int i = 0; i < _sportsmen.Length; i++)
                     {
                         copy[i] = _sportsmen[i];
@@ -58,7 +58,7 @@ namespace Lab_6
                     return copy;
                 }
             }
-            public int Count { get { return _count; } }
+            private int Count { get { return _count; } }
             public int SummaryScore
             {
                 get
@@ -81,7 +81,7 @@ namespace Lab_6
                 get
                 {
                     if (_sportsmen == null || _sportsmen.Length == 0) return 0;
-                    int maxPlace = int.MaxValue;
+                    int maxPlace = 18;
                     for (int i = 0; i < _sportsmen.Length; i++)
                     {
                         if (_sportsmen[i].Place > 0 && _sportsmen[i].Place < maxPlace) maxPlace = _sportsmen[i].Place;
@@ -94,17 +94,17 @@ namespace Lab_6
             public Team (string name)
             {
                 _name = name;
-                _sportsmen = new Sportsmen[6];
+                _sportsmen = new Sportsman[6];
                 _count = 0;
             }
             //методы
-            public void Add(Sportsmen sportsman)
+            public void Add(Sportsman sportsman)
             {
                 if (_sportsmen == null || _sportsmen.Length == 0 || _count >= _sportsmen.Length) return;
                 _sportsmen[_count] = sportsman;
                 _count++;
             }
-            public void Add(Sportsmen[] sportsman)
+            public void Add(Sportsman[] sportsman)
             {
                 if (_sportsmen.Length == 0 || _sportsmen == null || sportsman == null || sportsman.Length == 0 || _count >= _sportsmen.Length) return;
                 int i = 0;
