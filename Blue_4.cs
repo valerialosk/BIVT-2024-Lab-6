@@ -146,20 +146,17 @@ namespace Lab_6
                 Group result = new Group("Финалисты");
                 int n = size / 2;
                 int i = 0, j = 0;
-                int count = 0; 
                 while (i < n && j < n)
                 {
-                    if (count % 2 == 0)
+                    if (group1.Teams[i].TotalScore >= group2.Teams[j].TotalScore)
                     {
                         result.Add(group1.Teams[i]);
                         i++;
-                        count++;
                     }
                     else
                     {
                         result.Add(group2.Teams[j]);
                         j++;
-                        count++;
                     }
                 }
                 while (i < n)
@@ -169,7 +166,7 @@ namespace Lab_6
                 }
                 while (j < n)
                 {
-                    result.Add(group2.Teams[i]);
+                    result.Add(group2.Teams[j]);
                     j++;
                 }
                 return result;
