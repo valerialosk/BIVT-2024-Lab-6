@@ -63,7 +63,7 @@ namespace Lab_6
             //методы
             public void Jump(int[] result)
             {
-                if (result == null || _marks == null || result.Length == 0 || _marks.GetLength(0) < 2 || _marks.GetLength(1) < 5)
+                if (result == null || _marks == null || result.Length == 0 || _marks.GetLength(0) < 2 || _marks.GetLength(1) < 5) return;
                 if (_count == 0)
                 {
                     for (int j = 0; j < 5; j++)

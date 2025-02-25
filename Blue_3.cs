@@ -22,7 +22,8 @@ namespace Lab_6
             {
                 get
                 {
-                    if (_penaltyTimes == null || _penaltyTimes.Length == 0) return null;
+                    if (_penaltyTimes == null) return null;
+                    if (_penaltyTimes.Length == 0) return _penaltyTimes;
                     int[] copy = new int[_penaltyTimes.Length];
                     for (int i = 0; i < copy.Length; i++)
                     {

@@ -113,7 +113,7 @@ namespace Lab_6
             }
             public void Add(Team[] teams)
             {
-                if (_teams.Length == 0 || _teams == null || teams == null || teams.Length == 0 || _count >= _teams.Length) return;
+                if (_teams == null || teams == null || _teams.Length == 0 || teams.Length == 0 || _count >= _teams.Length) return;
                 int i = 0;
                 while (_count < _teams.Length && i < teams.Length)
                 {
@@ -145,18 +145,21 @@ namespace Lab_6
             {
                 Group result = new Group("Финалисты");
                 int n = size / 2;
-                int i = 0, j = 0; 
+                int i = 0, j = 0;
+                int count = 0; 
                 while (i < n && j < n)
                 {
-                    if (group1.Teams[i].TotalScore >= group2.Teams[j].TotalScore)
+                    if (count % 2 == 0)
                     {
                         result.Add(group1.Teams[i]);
                         i++;
+                        count++;
                     }
                     else
                     {
                         result.Add(group2.Teams[j]);
                         j++;
+                        count++;
                     }
                 }
                 while (i < n)
