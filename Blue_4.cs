@@ -82,20 +82,8 @@ namespace Lab_6
             private Team[] _teams;
             private int _count;
             //свойства
-            public string Name {get { return _name; } }
-            public Team[] Teams
-            {
-                get
-                {
-                    if (_teams == null) return null;
-                    Team[] copy = new Team[_teams.Length];
-                    for (int i = 0; i < copy.Length;i++)
-                    {
-                        copy[i] = _teams[i];
-                    }
-                    return copy;
-                }
-            }
+            public string Name => _name;
+            public Team[] Teams => _teams;
             private int Count {get { return _count; } }
             //конструктор
             public Group (string name)
